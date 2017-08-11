@@ -29,7 +29,6 @@ def get_messages():
 def home(request):
     return render(request=request, template_name='templates/home.html')
 
-@login_required
 def guestbook(request):
     # store the new message, if there is one
     if request.method == 'POST':
