@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+
+{% block js %}
+{% endblock %}
+
+
+{% block main %}
+
+<div class="container">
+
+	<div class='row'>
+
+		<div class='col-sm-4'>
+			<p>Here at Very Consequential Web Application, we store sensitive data and let users do important things.  We're a bank, or something like that.</p>
+			<img src='static/img/business.jpg' width='100%'/>
+		</div>
+		
+		<div class='col-sm-4'>
+			<p>We love millenials and want to connect with them so we built this viral greeter app where they can send their friends links to a customized page.  It's so 🔥🔥🔥.</p>
+			<img src='static/img/fellow_kids.gif' width='100%'/>
+			<br/>
+			<br/>
+			<form action="/reflected" style='text-align:center'>
+				<input type='text' name='name' placeholder="Your Friend's Name">
+				<input type='submit' value='Make Lit AF page'>
+			</form>
+			<br/>
+			<p><small>If you're trying to craft a reflected XSS attack in a recent version of Chrome, you might find a pleasant surprise.</small></p>
+		</div>
+		
+		<div class='col-sm-4'>
+			<p>As a hip company, we know you want to share online about your experiences.  So, we built our own social network called <a href='/guestbook/'>guestbook</a>!</p>
+			<img src='static/img/guestbook.png' width='100%'/>
+			<p><small>CSRF and XSS vulnerabilities included free!</small></p>
+		</div>
+
+	</div>
+</div>
+
+{% endblock %}

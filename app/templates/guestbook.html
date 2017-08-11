@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+{% block js %}
+{% endblock %}
+
+
+{% block main %}
+
+<div class="container">
+	<div class='row'>
+		<div class='col-xs-4'>
+			<p>Say something you want other people to see!</p>
+			<form action="/guestbook/" method='POST'>
+				{% csrf_token %}
+				<input type='text' name='message' placeholder="Your message">
+				<input type='submit' value='Post to this page'>
+			</form>
+		</div>
+		<div class='col-xs-8'>
+			<p>Messages already left:</p>
+        	</ul>
+			{% for message in messages %}
+				<!-- securely escaped -->
+				<li>{{ message }}</li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
