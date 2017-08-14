@@ -2,6 +2,7 @@ import datetime
 import os
 
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import RequestContext
 
@@ -40,3 +41,7 @@ def guestbook(request):
         template_name='templates/guestbook.html',
         context=context
     )
+
+def greeter(request):
+    who = request.GET.get('name', 'friend')
+    return HttpResponse("Hello, {}".format(who))
