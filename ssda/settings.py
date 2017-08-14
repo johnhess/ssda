@@ -139,6 +139,3 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 LOGIN_URL = 'accounts/login/'
 LOGOUT_REDIRECT_URL = '/'
-
-# unrealistic
-CSRF_TRUSTED_ORIGINS = ['.herokuapp.com']
