@@ -1,7 +1,6 @@
 import datetime
 import os
 
-from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import RequestContext
@@ -26,11 +25,13 @@ def get_messages():
         for key in reversed(sorted(db.keys()))
     ]
 
-@login_required
 def home(request):
     return render(request=request, template_name='templates/home.html')
 
 def guestbook(request):
+    # version 2.0
+    # CSRF Middleware protects this by default in Django
+
     # store the new message, if there is one
     if request.method == 'POST':
         store_message(request.POST.get('message'))
@@ -43,5 +44,11 @@ def guestbook(request):
     )
 
 def greeter(request):
+    # Not used in the talk, but here's a vulnerable django greeter
     who = request.GET.get('name', 'friend')
     return HttpResponse("Hello, {}".format(who))
+
+def nuke(request):
+    """Clears the guestbook message board."""
+    get_db().flushall()
+    return HttpResponse('database nuked')
